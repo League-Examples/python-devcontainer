@@ -14,7 +14,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_BASE_NAME: ${{ github.repository }}
   ORG_NAME: league-infrastructure
 
 jobs:
@@ -47,25 +47,25 @@ jobs:
         id: image_tag
         run: |
           TAG=$(echo "${GITHUB_REF}" | sed 's|refs/tags/||')
-          IMAGE_NAME_LOWER=$(echo "${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE_BASE_NAME_LOWER=$(echo "${{ env.IMAGE_BASE_NAME }}" | tr '[:upper:]' '[:lower:]')
           echo "TAG=${TAG}" >> $GITHUB_ENV
-          echo "IMAGE_NAME=${IMAGE_NAME_LOWER}" >> $GITHUB_ENV
+          echo "IMAGE_NAME= ${ env.REGISTRY }/${ env.ORG_NAME }/${ env.IMAGE_BASE_NAME_LOWER }" >> $GITHUB_ENV
           echo "LATEST_TAG=true" >> $GITHUB_ENV
         shell: bash
 
       # Step 4: Build the Dev Container image
       - name: Build Dev Container image
         run: |
-          devcontainer build --workspace-folder . --image-name ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
+          devcontainer build --workspace-folder . --image-name ${{ env.IMAGE_NAME }}:${{ env.TAG }}
 
       # Step 5: Tag image as latest
       - name: Tag image as latest
         run: |
-          docker tag ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} \
-                     ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:latest
+          docker tag ${{ env.IMAGE_NAME }}:${{ env.TAG }} \
+                     ${{ env.IMAGE_NAME }}:latest
 
       # Step 6: Push Docker image
       - name: Push Docker image
         run: |
-          docker push ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
-          docker push ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.IMAGE_NAME }}:${{ env.TAG }}
+          docker push ${{ env.IMAGE_NAME }}:latest
