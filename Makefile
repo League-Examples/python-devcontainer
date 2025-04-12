@@ -1,6 +1,6 @@
 .PHONY: build push ver install publish check-docker
 
-VERSION := "1.20250412.7"
+VERSION := "1.20250412.8"
 IMAGE_NAME := jtlpython:$(VERSION)
 IMAGE_FULL_NAME := ghcr.io/League-Examples/$(IMAGE_NAME)
 
@@ -9,8 +9,9 @@ ver:
 
 push:
 	git commit --allow-empty -a -m "Release version $(VERSION)"
-	git tag v$(VERSION)
-	git push --follow-tags
+	git push
+	git tag v$(VERSION) 
+	git push --tags
 
 install:
 	@if ! command -v devcontainer >/dev/null 2>&1; then \
