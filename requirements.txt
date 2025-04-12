@@ -1,28 +1,67 @@
-
-requests 
-tqdm
+# Web and APIs
+requests
 python-dotenv
 fastapi
 flask
 gunicorn
+
+# Utils and CLI
+tqdm
 pyyaml
 invoke
 click
 python-slugify
+
+# Game development
 pygame
+pgzero
+guizero
 
+# Jupyter and visualization
 jupyterlab
+ipykernel
 ipywidgets
-
-processing-py
-
 matplotlib
 seaborn
 plotly
+plotly-express
 
+# Data analysis
 numpy
 pandas
 scikit-learn
 scipy
+processing-py
 
-git+https://github.com/league-infrastructure/lesson-builder.git#egg=lesson-builder
+# Computer vision
+opencv-python
+
+# Databases
+redis
+duckdb
+sqlalchemy
+
+
+# Geographic data
+geopandas
+contextily
+folium
+shapely
+pyproj
+
+# Data handling & processing
+openpyxl
+pyarrow
+dask
+beautifulsoup4
+fastparquet
+
+# Interactive dashboards
+dash
+panel
+hvplot
+
+# Utilities
+joblib
+pytest
+black
