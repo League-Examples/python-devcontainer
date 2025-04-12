@@ -18,6 +18,6 @@ install:
 build:
 	devcontainer build --workspace-folder . --image-name ghcr.io/league-infrastructure/$(IMAGE_NAME)
 
-publish:
+publish: bulid 
 	echo $$GITHUB_TOKEN | docker login ghcr.io -u jointheleague-it --password-stdin
 	docker push ghcr.io/league-infrastructure/$(IMAGE_NAME)
