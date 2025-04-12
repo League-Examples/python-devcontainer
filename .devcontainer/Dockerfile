@@ -1,4 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
+
+LABEL org.opencontainers.image.description DESCRIPTION="Microsoft Python 3.12 Dev Container, tailored for League projects"
+
 ARG VNC_RESOLUTION=600x600x16
 
 # [Optional] Allow the vscode user to pip install globally w/o sudo
