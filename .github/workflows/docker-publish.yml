@@ -47,7 +47,9 @@ jobs:
         id: image_tag
         run: |
           TAG=$(echo "${GITHUB_REF}" | sed 's|refs/tags/||')
+          IMAGE_NAME_LOWER=$(echo "${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')
           echo "TAG=${TAG}" >> $GITHUB_ENV
+          echo "IMAGE_NAME=${IMAGE_NAME_LOWER}" >> $GITHUB_ENV
           echo "LATEST_TAG=true" >> $GITHUB_ENV
         shell: bash
 
