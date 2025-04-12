@@ -1,6 +1,6 @@
 .PHONY: build push ver install publish check-docker
 
-VERSION := "1.20250412.5"
+VERSION := "1.20250412.6"
 IMAGE_NAME := jtlpython:$(VERSION)
 
 ver:
