@@ -27,6 +27,20 @@ jobs:
       id-token: write
 
     steps:
+      # Step 0: Check for permissions
+      - name: Check for GitHub Package permissions
+        run: |
+          echo "Running as GitHub user: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Checking if we have write access to packages..."
+          if [ "${{ github.event.repository.permissions.push }}" = "true" ]; then
+            echo "✅ This workflow has push access to the repository"
+          else
+            echo "⚠️ Note: Limited permissions detected. This may affect package publishing."
+          fi
+
       # Step 1: Check out the repository
       - name: Checkout code
         uses: actions/checkout@v3
