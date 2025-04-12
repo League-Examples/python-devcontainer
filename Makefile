@@ -1,6 +1,6 @@
 .PHONY: build push ver install publish check-docker
 
-VERSION := "1.20250412.4"
+VERSION := "1.20250412.5"
 IMAGE_NAME := jtlpython:$(VERSION)
 
 ver:
@@ -8,9 +8,8 @@ ver:
 
 push:
 	git commit --allow-empty -a -m "Release version $(VERSION)"
-	git push
-	git tag v$(VERSION) 
-	git push --tags
+	git tag v$(VERSION)
+	git push --follow-tags
 
 install:
 	@if ! command -v devcontainer >/dev/null 2>&1; then \
