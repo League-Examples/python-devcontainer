@@ -49,7 +49,7 @@ jobs:
           TAG=$(echo "${GITHUB_REF}" | sed 's|refs/tags/||')
           IMAGE_BASE_NAME_LOWER=$(echo "${{ env.IMAGE_BASE_NAME }}" | tr '[:upper:]' '[:lower:]')
           echo "TAG=${TAG}" >> $GITHUB_ENV
-          echo "IMAGE_NAME= ${ env.REGISTRY }/${ env.ORG_NAME }/${ env.IMAGE_BASE_NAME_LOWER }" >> $GITHUB_ENV
+          echo "IMAGE_NAME=${REGISTRY}/${ORG_NAME}/${IMAGE_BASE_NAME_LOWER}" >> $GITHUB_ENV
           echo "LATEST_TAG=true" >> $GITHUB_ENV
         shell: bash
 
