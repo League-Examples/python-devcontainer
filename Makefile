@@ -2,6 +2,7 @@
 
 VERSION := "1.20250412.6"
 IMAGE_NAME := jtlpython:$(VERSION)
+IMAGE_FULL_NAME := ghcr.io/League-Examples/$(IMAGE_NAME)
 
 ver:
 	@echo $(VERSION)
@@ -26,7 +27,7 @@ check-docker:
 	fi
 
 build: install check-docker
-	devcontainer build --workspace-folder . --image-name ghcr.io/league-infrastructure/$(IMAGE_NAME)
+	devcontainer build --workspace-folder . --image-name $(IMAGE_FULL_NAME)
 
 publish: check-docker
 	echo $$GITHUB_TOKEN | docker login ghcr.io -u jointheleague-it --password-stdin
