@@ -1,6 +1,6 @@
 .PHONY: build push ver install publish check-docker
 
-VERSION := "1.20250414.1"
+VERSION := "1.20250414.2"
 IMAGE_NAME := jtlpython:$(VERSION)
 IMAGE_FULL_NAME := ghcr.io/league-examples/$(IMAGE_NAME)
 

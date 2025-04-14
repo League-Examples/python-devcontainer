@@ -25,6 +25,10 @@ matplotlib
 seaborn
 plotly
 plotly-express
+seaborn
+dash
+panel
+hvplot
 
 # Data analysis
 numpy
@@ -56,13 +60,6 @@ dask
 beautifulsoup4
 fastparquet
 
-# Interactive dashboards
-seaborn
-plotly
-plotly-dash
-dash
-panel
-hvplot
 
 # Utilities
 joblib
