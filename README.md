@@ -1,5 +1,3 @@
-
-
 # Python Dev Container
 
 This repo is the base for the League's Python environment for devcontainers. 

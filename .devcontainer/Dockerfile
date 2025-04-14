@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
+FROM mcr.microsoft.com/devcontainers/python:3.12
 
 LABEL org.opencontainers.image.description DESCRIPTION="Microsoft Python 3.12 Dev Container, tailored for League projects"
 
@@ -18,6 +18,7 @@ COPY ./.devcontainer/sync_deps.py /workspaces/session/post-start/
 
 # copy requirements list into layer of dev image
 COPY requirements.txt /workspaces/session/
+RUN python -m pip install --upgrade pip
 RUN pip --disable-pip-version-check --no-cache-dir install -r /workspaces/session/requirements.txt
 
 # [Optional] Uncomment this section to install additional OS packages.

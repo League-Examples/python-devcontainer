@@ -57,6 +57,9 @@ beautifulsoup4
 fastparquet
 
 # Interactive dashboards
+seaborn
+plotly
+plotly-dash
 dash
 panel
 hvplot
