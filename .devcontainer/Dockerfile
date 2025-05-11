@@ -29,8 +29,18 @@ RUN pip --disable-pip-version-check --no-cache-dir install -r /workspaces/sessio
 #     && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
+# Create directories for extensions
+RUN mkdir -p /app/extensions
+RUN mkdir -p /vscode/extensionsCache/
 
-RUN mkdir -p /app/extensions 
 
-COPY ./.devcontainer/jtl-vscode-1.20250508.1.vsix /app/extensions/
+USER vscode
+
+# Stave student from being confused by Git asking to make this decision. 
+RUN git config --global pull.rebase true
+
+# newline after very long shell prompt
+RUN echo 'export PS1="${PS1}\n$ "' >> ~/.bashrc
+USER root
+
 
