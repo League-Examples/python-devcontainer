@@ -52,6 +52,7 @@ contextily
 folium
 shapely
 pyproj
+cenpy
 
 # Data handling & processing
 openpyxl
